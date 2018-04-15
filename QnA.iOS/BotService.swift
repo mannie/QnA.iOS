@@ -21,10 +21,13 @@ internal final class BotService {
     internal typealias NewMessageHandler = (Int, Message)->Void
     
     internal private(set) var messages: [Message] = []
-    private let newMessageHandler: NewMessageHandler?
     private let queue = DispatchQueue(label: "Messages")
+
+    private let api: API
+    private let newMessageHandler: NewMessageHandler?
     
     internal init(api: API, newMessageHandler: NewMessageHandler?) {
+        self.api = api
         self.newMessageHandler = newMessageHandler
     }
     
@@ -34,13 +37,36 @@ internal final class BotService {
         post(message: message)
     }
     
-    private func post(message: Message) {
-        DispatchQueue.global().async { [weak self] in
-            Thread.sleep(forTimeInterval: 2)
-            
-            let message = Message(sender: .bot, body: "-> \(message.body)")
-            self?.invokeNewMessageHandler(message: message)
+    private func request(post message: Message) -> URLRequest {
+        guard let url = URL(string: "https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases/\(api.knowledgebase)/generateAnswer") else {
+            fatalError("Invalid knowledgebase identifier found")
         }
+
+        let body = [ "question" : message.body ]
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(api.key, forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
+        return request
+    }
+    
+    private func post(message: Message) {
+        let task = URLSession.shared.dataTask(with: request(post: message)) { (data, response, error) in
+            guard
+                let data = data,
+                let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:[Any]],
+                let answers = json?["answers"] as? [[String:Any]],
+                let first = answers.first,
+                let answer = first["answer"] as? String else {
+                    return
+            }
+            
+            let message = Message(sender: .bot, body: answer)
+            self.invokeNewMessageHandler(message: message)
+        }
+        task.resume()
     }
     
     private func invokeNewMessageHandler(message: Message) {
