@@ -12,11 +12,16 @@ internal final class MessagingViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageEntry: UITextField!
+    @IBOutlet weak var composer: UIView!
     
     fileprivate private(set) var bot: BotService!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: nil, using: handle)
+        notificationCenter.addObserver(forName: .UIKeyboardWillHide, object: nil, queue: nil, using: handle)
         
         bot = BotService(api: .bot, newMessageHandler: { (index, message) in
             DispatchQueue.main.async {
@@ -29,8 +34,24 @@ internal final class MessagingViewController: UIViewController {
             }
         })
     }
-
     
+    private func handle(keyboard notification: Notification) {
+        guard let frame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect else {
+                return
+        }
+        
+        var delta = composer.frame.origin.y
+        composer.frame.origin.y = frame.origin.y - composer.frame.height
+        delta -= composer.frame.origin.y
+        view.frame.size.height -= delta
+        
+        view.setNeedsLayout()
+        
+        if let indexPath = tableView.indexPathsForVisibleRows?.last {
+            tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
+    }
+
     @IBAction func postMessage() {
         guard let text = messageEntry.text else {
             return

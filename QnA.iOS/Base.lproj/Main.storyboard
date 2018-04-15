@@ -19,8 +19,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2L-MO-UiQ">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lis-Uk-BXw">
+                                        <rect key="frame" x="323" y="0.0" width="44" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="65T-4Z-6A9"/>
+                                        </constraints>
+                                        <state key="normal" title="Send"/>
+                                        <connections>
+                                            <action selector="postMessage" destination="BYZ-38-t0r" eventType="touchUpInside" id="dCC-aJ-Jfa"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hkm-yb-q9i">
+                                        <rect key="frame" x="8" y="0.0" width="307" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="postMessage" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="FJD-Vj-fx0"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="lis-Uk-BXw" firstAttribute="leading" secondItem="Hkm-yb-q9i" secondAttribute="trailing" constant="8" id="9P3-nw-BLq"/>
+                                    <constraint firstAttribute="trailing" secondItem="lis-Uk-BXw" secondAttribute="trailing" constant="8" id="QcN-c2-TB3"/>
+                                    <constraint firstAttribute="height" constant="44" id="b1l-mQ-KQA"/>
+                                    <constraint firstItem="Hkm-yb-q9i" firstAttribute="leading" secondItem="O2L-MO-UiQ" secondAttribute="leading" constant="8" id="hdp-1K-PxO"/>
+                                    <constraint firstItem="Hkm-yb-q9i" firstAttribute="centerY" secondItem="lis-Uk-BXw" secondAttribute="centerY" id="jwY-4D-rwl"/>
+                                    <constraint firstItem="Hkm-yb-q9i" firstAttribute="top" secondItem="O2L-MO-UiQ" secondAttribute="top" id="voX-Ng-2FB"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dS3-so-hZF">
-                                <rect key="frame" x="0.0" y="10" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BotMessageCell" textLabel="hVk-Hz-hIB" style="IBUITableViewCellStyleDefault" id="5sA-Nn-odj">
@@ -63,48 +96,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="8Qw-g5-lpb"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqV-lY-nQo">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem style="plain" id="gcL-wp-afi">
-                                        <textField key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="76l-gM-Yus">
-                                            <rect key="frame" x="16" y="7" width="299" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <connections>
-                                                <action selector="postMessage" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="ay8-nr-YPd"/>
-                                            </connections>
-                                        </textField>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" id="pz3-Vp-179">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WRx-NH-gsE">
-                                            <rect key="frame" x="323" y="7" width="36" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Send"/>
-                                            <connections>
-                                                <action selector="postMessage" destination="BYZ-38-t0r" eventType="touchUpInside" id="tuc-Vf-AgQ"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="dS3-so-hZF" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="2mU-Ek-FYE"/>
-                            <constraint firstItem="dS3-so-hZF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="58y-PE-aaY"/>
-                            <constraint firstItem="dS3-so-hZF" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="8Ur-Ii-GzS"/>
-                            <constraint firstItem="xqV-lY-nQo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="B3B-nC-tVr"/>
-                            <constraint firstItem="xqV-lY-nQo" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="LW6-UM-TXh"/>
-                            <constraint firstItem="xqV-lY-nQo" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="XPh-Br-EdX"/>
-                            <constraint firstItem="dS3-so-hZF" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="vgq-b4-QeD"/>
+                            <constraint firstItem="O2L-MO-UiQ" firstAttribute="leading" secondItem="dS3-so-hZF" secondAttribute="leading" id="ClT-Li-Eyh"/>
+                            <constraint firstItem="O2L-MO-UiQ" firstAttribute="top" secondItem="dS3-so-hZF" secondAttribute="bottom" constant="8" id="J1l-he-gJ1"/>
+                            <constraint firstItem="dS3-so-hZF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="44" id="SI7-JG-7Jq"/>
+                            <constraint firstItem="dS3-so-hZF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="h0O-qK-Y5l"/>
+                            <constraint firstItem="O2L-MO-UiQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="sNX-nI-B5b"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dS3-so-hZF" secondAttribute="trailing" id="uPZ-ky-If9"/>
+                            <constraint firstItem="O2L-MO-UiQ" firstAttribute="width" secondItem="dS3-so-hZF" secondAttribute="width" id="vgM-ne-eBj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="messageEntry" destination="76l-gM-Yus" id="VcM-PO-YG1"/>
+                        <outlet property="composer" destination="O2L-MO-UiQ" id="z7E-LC-hPY"/>
+                        <outlet property="messageEntry" destination="Hkm-yb-q9i" id="3pX-JD-Qyk"/>
                         <outlet property="tableView" destination="dS3-so-hZF" id="qEM-wc-kUK"/>
                     </connections>
                 </viewController>
