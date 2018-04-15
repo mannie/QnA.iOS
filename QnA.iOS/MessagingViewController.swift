@@ -20,10 +20,12 @@ internal final class MessagingViewController: UIViewController {
         
         bot = BotService(api: .bot, newMessageHandler: { (index, message) in
             DispatchQueue.main.async {
+                let indexPath = IndexPath(row: index, section: 0)
                 let tableView = self.tableView
                 tableView?.beginUpdates()
-                tableView?.insertRows(at: [IndexPath(row: index, section: 0)], with: .bottom)
+                tableView?.insertRows(at: [indexPath], with: .bottom)
                 tableView?.endUpdates()
+                tableView?.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }
         })
     }
