@@ -73,6 +73,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="postMessage" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="ay8-nr-YPd"/>
+                                            </connections>
                                         </textField>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="pz3-Vp-179">
@@ -80,6 +83,9 @@
                                             <rect key="frame" x="323" y="7" width="36" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Send"/>
+                                            <connections>
+                                                <action selector="postMessage" destination="BYZ-38-t0r" eventType="touchUpInside" id="tuc-Vf-AgQ"/>
+                                            </connections>
                                         </button>
                                     </barButtonItem>
                                 </items>
@@ -98,6 +104,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="messageEntry" destination="76l-gM-Yus" id="VcM-PO-YG1"/>
                         <outlet property="tableView" destination="dS3-so-hZF" id="qEM-wc-kUK"/>
                     </connections>
                 </viewController>

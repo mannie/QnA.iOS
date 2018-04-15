@@ -13,6 +13,8 @@
 		36E296742082CFDF00F45E74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36E296732082CFDF00F45E74 /* Assets.xcassets */; };
 		36E296772082CFDF00F45E74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36E296752082CFDF00F45E74 /* LaunchScreen.storyboard */; };
 		36E2967F2082D68B00F45E74 /* BotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E2967E2082D68B00F45E74 /* BotService.swift */; };
+		36E296812082D9F200F45E74 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E296802082D9F200F45E74 /* API.swift */; };
+		36E296832082DA0700F45E74 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36E296822082DA0700F45E74 /* API.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		36E296762082CFDF00F45E74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36E296782082CFDF00F45E74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36E2967E2082D68B00F45E74 /* BotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotService.swift; sourceTree = "<group>"; };
+		36E296802082D9F200F45E74 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		36E296822082DA0700F45E74 /* API.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +63,12 @@
 				36E2966C2082CFDE00F45E74 /* AppDelegate.swift */,
 				36E2966E2082CFDE00F45E74 /* MessagingViewController.swift */,
 				36E2967E2082D68B00F45E74 /* BotService.swift */,
+				36E296802082D9F200F45E74 /* API.swift */,
 				36E296702082CFDE00F45E74 /* Main.storyboard */,
 				36E296732082CFDF00F45E74 /* Assets.xcassets */,
 				36E296752082CFDF00F45E74 /* LaunchScreen.storyboard */,
 				36E296782082CFDF00F45E74 /* Info.plist */,
+				36E296822082DA0700F45E74 /* API.plist */,
 			);
 			path = QnA.iOS;
 			sourceTree = "<group>";
@@ -126,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36E296772082CFDF00F45E74 /* LaunchScreen.storyboard in Resources */,
+				36E296832082DA0700F45E74 /* API.plist in Resources */,
 				36E296742082CFDF00F45E74 /* Assets.xcassets in Resources */,
 				36E296722082CFDE00F45E74 /* Main.storyboard in Resources */,
 			);
@@ -140,6 +147,7 @@
 			files = (
 				36E2967F2082D68B00F45E74 /* BotService.swift in Sources */,
 				36E2966F2082CFDE00F45E74 /* MessagingViewController.swift in Sources */,
+				36E296812082D9F200F45E74 /* API.swift in Sources */,
 				36E2966D2082CFDE00F45E74 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

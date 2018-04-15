@@ -11,25 +11,52 @@ import UIKit
 internal final class MessagingViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var messageEntry: UITextField!
+    
+    fileprivate private(set) var bot: BotService!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        bot = BotService(api: .bot, newMessageHandler: { (index, message) in
+            DispatchQueue.main.async {
+                let tableView = self.tableView
+                tableView?.beginUpdates()
+                tableView?.insertRows(at: [IndexPath(row: index, section: 0)], with: .bottom)
+                tableView?.endUpdates()
+            }
+        })
     }
 
+    
+    @IBAction func postMessage() {
+        guard let text = messageEntry.text else {
+            return
+        }
+        messageEntry.text = nil
+        bot.post(message: text)
+    }
+    
 }
+
 
 extension MessagingViewController: UITableViewDataSource {
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 13
+        return bot.messages.count
+    }
+    
+    private func cellReuseID(for message: BotService.Message) -> String {
+        switch message.sender {
+        case .me: return "MyMessageCell"
+        case .bot: return "BotMessageCell"
+        }
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let isMyMessage = indexPath.row % 2 == 0
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: isMyMessage ? "MyMessageCell" : "BotMessageCell", for: indexPath)
-        cell.textLabel?.text = "\(indexPath)"
+        let message = bot.messages[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID(for: message), for: indexPath)
+        cell.textLabel?.text = message.body
         return cell
     }
     
