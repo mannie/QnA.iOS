@@ -25,6 +25,9 @@ internal final class BotService {
 
     private let api: API
     private let newMessageHandler: NewMessageHandler?
+    internal var name: String {
+        return api.name
+    }
     
     internal init(api: API, newMessageHandler: NewMessageHandler?) {
         self.api = api

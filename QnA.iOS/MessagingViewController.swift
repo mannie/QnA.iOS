@@ -13,13 +13,12 @@ internal final class MessagingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageEntry: UITextField!
     @IBOutlet weak var composer: UIView!
+    @IBOutlet weak var logo: UIImageView!
     
     fileprivate private(set) var bot: BotService!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "FAQ"
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: nil, using: handle)
@@ -35,6 +34,8 @@ internal final class MessagingViewController: UIViewController {
                 tableView?.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }
         })
+    
+        logo.image = UIImage(named: "Logo")
     }
     
     private func handle(keyboard notification: Notification) {

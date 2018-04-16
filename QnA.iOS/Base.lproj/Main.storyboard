@@ -74,7 +74,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BotMessageCell" textLabel="hVk-Hz-hIB" style="IBUITableViewCellStyleDefault" id="5sA-Nn-odj">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BotMessageCell" textLabel="hVk-Hz-hIB" rowHeight="44" style="IBUITableViewCellStyleDefault" id="5sA-Nn-odj">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5sA-Nn-odj" id="Xeo-47-Ib3">
@@ -127,16 +127,30 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pTw-7P-gIs"/>
+                    <navigationItem key="navigationItem" id="pTw-7P-gIs">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="FLu-4N-GoO">
+                            <rect key="frame" x="38" y="0.0" width="300" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xn3-PZ-6gm">
+                                    <rect key="frame" x="8" y="6" width="282" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </navigationItem>
                     <connections>
                         <outlet property="composer" destination="O2L-MO-UiQ" id="z7E-LC-hPY"/>
+                        <outlet property="logo" destination="Xn3-PZ-6gm" id="far-eS-Nwi"/>
                         <outlet property="messageEntry" destination="Hkm-yb-q9i" id="3pX-JD-Qyk"/>
                         <outlet property="tableView" destination="dS3-so-hZF" id="qEM-wc-kUK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-474" y="134"/>
+            <point key="canvasLocation" x="-474.39999999999998" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>
