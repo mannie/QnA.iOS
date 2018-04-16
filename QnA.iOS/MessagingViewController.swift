@@ -19,6 +19,8 @@ internal final class MessagingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "FAQ"
+        
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: nil, using: handle)
         notificationCenter.addObserver(forName: .UIKeyboardWillHide, object: nil, queue: nil, using: handle)
