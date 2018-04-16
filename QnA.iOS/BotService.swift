@@ -25,18 +25,20 @@ internal final class BotService {
 
     private let api: API
     private let newMessageHandler: NewMessageHandler?
-    internal var name: String {
-        return api.name
-    }
     
     internal init(api: API, newMessageHandler: NewMessageHandler?) {
         self.api = api
         self.newMessageHandler = newMessageHandler
+
+        DispatchQueue.main.async {
+            let intro = Message(sender: .bot, body: "Hi, I'm \(api.name). How may I be of assistance?")
+            self.thread(message: intro)
+        }
     }
     
     internal func post(message body: String) {
         let message = Message(sender: .me, body: body)
-        invokeNewMessageHandler(message: message)
+        thread(message: message)
         post(message: message)
     }
     
@@ -67,12 +69,12 @@ internal final class BotService {
             }
             
             let message = Message(sender: .bot, body: answer)
-            self.invokeNewMessageHandler(message: message)
+            self.thread(message: message)
         }
         task.resume()
     }
     
-    private func invokeNewMessageHandler(message: Message) {
+    private func thread(message: Message) {
         queue.sync {
             let index = messages.count
             messages.append(message)

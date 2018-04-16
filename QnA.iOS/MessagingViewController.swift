@@ -24,6 +24,7 @@ internal final class MessagingViewController: UIViewController {
         notificationCenter.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: nil, using: handle)
         notificationCenter.addObserver(forName: .UIKeyboardWillHide, object: nil, queue: nil, using: handle)
         
+        logo.image = UIImage(named: "Logo")
         bot = BotService(api: .bot, newMessageHandler: { (index, message) in
             DispatchQueue.main.async {
                 let indexPath = IndexPath(row: index, section: 0)
@@ -34,8 +35,6 @@ internal final class MessagingViewController: UIViewController {
                 tableView?.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }
         })
-    
-        logo.image = UIImage(named: "Logo")
     }
     
     private func handle(keyboard notification: Notification) {
