@@ -43,7 +43,7 @@ internal final class BotService {
     }
     
     private func request(post message: Message) -> URLRequest {
-        guard let url = URL(string: "https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases/\(api.knowledgebase)/generateAnswer") else {
+        guard let url = URL(string: "\(api.host)/knowledgebases/\(api.knowledgeBase)/generateAnswer") else {
             fatalError("Invalid knowledgebase identifier found")
         }
 
@@ -53,7 +53,7 @@ internal final class BotService {
         request.httpMethod = "POST"
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue(api.key, forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
+        request.setValue("EndpointKey \(api.authKey)", forHTTPHeaderField: "Authorization")
         return request
     }
     

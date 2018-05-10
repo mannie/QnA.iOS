@@ -3,10 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>Name</key>
-	<string>QnA Maker FAQ</string>
-	<key>Key</key>
+	<string>Bot</string>
+	<key>AuthKey</key>
 	<string></string>
-	<key>Knowledgebase</key>
+	<key>Host</key>
+	<string></string>
+	<key>KnowledgeBase</key>
 	<string></string>
 </dict>
 </plist>
